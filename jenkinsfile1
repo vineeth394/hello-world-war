@@ -7,7 +7,7 @@ pipeline {
                 echo 'Hello World'
             }
         }
-        stage('Test1') {
+        stage('Test2') {
             steps {
                 echo 'Welcoming user to jenkinsfiles'
             }
