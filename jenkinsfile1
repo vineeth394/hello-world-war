@@ -2,14 +2,15 @@ pipeline {
     agent any
     stages
 {
-        stage('Test1') {
+        stage('Checkout') {
             steps {
-                echo 'Hello World'
+                sh 'git clone https://github.com/vineeth394/hello-world-war.git'
             }
         }
-        stage('Test2') {
+        stage('sample') {
             steps {
                 echo 'Welcoming user to jenkinsfiles'
+                sh 'mvn clean package'
             }
         }
     }
