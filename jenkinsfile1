@@ -20,7 +20,7 @@ agent { label 'slave' }
             }
         }
     }
-}
+
        post {
         success {
             echo 'Pipeline completed successfully.'
@@ -41,3 +41,4 @@ agent { label 'slave' }
             )
         }
     }
+}
