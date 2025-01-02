@@ -40,3 +40,4 @@ agent { label 'slave' }
                       "Please check the logs here: ${env.BUILD_URL}"
             )
         }
+    }
