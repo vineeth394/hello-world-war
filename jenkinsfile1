@@ -1,21 +1,14 @@
 pipeline {
-  parameters {
-        string(name: 'cmd', defaultValue: 'package', description: 'Who should I say hello to?')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-      }
-agent any
-    stages
-{
+agent { label 'self_slaave' }
+    stages {
         stage('Checkout') {
             steps {
                       sh 'rm -rf hello-world-war' 
                       sh 'git clone https://github.com/vineeth394/hello-world-war.git'
             }
         }
-        stage('sample') {
+        stage('build') {
             steps {
-                echo 'Welcoming user to jenkinsfiles'
                 sh 'cd hello-world-war'
                 sh 'mvn clean package'
             }
