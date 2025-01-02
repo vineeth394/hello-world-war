@@ -1,5 +1,5 @@
 pipeline {
-agent { label 'self_slaave' }
+agent { label 'slave' }
     stages {
         stage('Checkout') {
             steps {
