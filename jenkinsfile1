@@ -21,3 +21,16 @@ agent { label 'slave' }
         }
     }
 }
+        post {
+            success {
+                mail to: 'vineethmuntamadugu@gmail.com',
+                    subject: "BUILD SUCCESS",
+                    body: "build is very much successful"
+                        }
+
+            failure {
+                 mail to: 'vineethmuntamadugu@gmail.com',
+                    subject: "BUILD FAILURE",
+                    body: "build is just failed"
+                        }
+                    }
