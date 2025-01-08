@@ -34,16 +34,20 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-maven-${{ hashFiles('/pom.xml') }}
           restore-keys: 
+
+      - name: Configure Maven settings
+        run: |
+          mkdir -p ~/.m2
+          echo "<settings>
+                  <servers>
+                    <server>
+                      <id>hello-world-war</id>
+                      <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
+                      <password>${{ secrets.ARTIFACTORY_API_KEY }}</password>
+                    </server>
+                  </servers>
+                </settings>" > ~/.m2/settings.xml
           
       # Build the project with Maven
       - name: Build with Maven
-        run: mvn clean install
-
-      #snapshot deployment prop
-        <distributionManagement>
-		    	<snapshotRepository>
-				    <id>snapshots</id>
-			    	<name>a0owv5axnoksm-artifactory-primary-0-snapshots</name>
-			    	<url>https://trialwwcxid.jfrog.io/artifactory/hello-world-war-libs-snapshot</url>
-		    	</snapshotRepository>
-	    	</distributionManagement>
+        run: mvn clean deploy
