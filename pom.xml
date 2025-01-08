@@ -7,7 +7,15 @@
 	<packaging>war</packaging>
 	<name>Hello World Web Application Repository</name>
 	<description>Simplest possible Java Webapp</description>
-
+	
+	<distributionManagement>
+		<repository>
+			<id>hello-world-war</id>
+			<name>a0owv5axnoksm-artifactory-primary-0-releases</name>
+			<url>https://trialwwcxid.jfrog.io/artifactory/hello-world-war-libs-release</url>
+		</repository>
+	</distributionManagement>
+	
 	<build>
 		<plugins>
 			<plugin>
