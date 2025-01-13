@@ -48,7 +48,7 @@ jobs:
 
       # Step 2: Verify Maven installation
       - name: Verify Maven installation
-        run: mvn --version		  
+        run: maven --version		  
       # Build the project with Maven
       - name: Build with Maven
         run: mvn clean install
