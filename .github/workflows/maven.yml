@@ -1,20 +1,24 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
 
 name: Java CI maven build
 
 on:
   push:
-    branches:
-      - ''
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
-  workflow_dispatch:
+    branches: [ "master" ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+
+    runs-on: self-hosted
+
     steps:
       # Checkout the repository
       - name: Checkout Code
@@ -32,10 +36,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.m2
-          key: ${{ runner.os }}-maven-${{ hashFiles('/pom.xml') }}
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: 
-          
-      # Step 1: Install Maven (if not installed already)
+
       - name: Install Maven
         run: |
           if ! command -v mvn &> /dev/null; then
@@ -48,8 +51,8 @@ jobs:
 
       # Step 2: Verify Maven installation
       - name: Verify Maven installation
-        run: mvn -v
-		  
+        run: mvn -v 
+          
       # Build the project with Maven
       - name: Build with Maven
         run: mvn clean install
