@@ -1,21 +1,22 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.efsavage</groupId>
 	<artifactId>hello-world-war</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.${env.GITHUB_RUN_NUMBER}</version>
 	<packaging>war</packaging>
-	<name>Hello World Web Application Repository</name>
-	<description>Simplest possible Java Webapp</description>
-	
+
 	<distributionManagement>
-		<repository>
-			<id>hello-world-war</id>
-			<name>a0owv5axnoksm-artifactory-primary-0-releases</name>
-			<url>https://trialwwcxid.jfrog.io/artifactory/hello-world-war-libs-release</url>
-		</repository>
-	</distributionManagement>
-	
+	    <repository>
+	        <id>hello-world-war</id>
+	        <name>hello-world-war-libs-release</name>
+	        <url>http://3.111.214.169:8082/artifactory/hello-world-war-libs-release/</url>
+	    </repository>
+  	</distributionManagement>
+        <name>Hello World Web Application Repository</name>
+	<description>Simplest possible Java Webapp</description>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -29,8 +30,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1.1</version>
+				<version>3.4.0</version>
 			</plugin>
+			
 		</plugins>
 	</build>
 
