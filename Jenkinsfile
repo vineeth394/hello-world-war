@@ -8,8 +8,6 @@ pipeline {
         stage('checkout') {             
             steps {
                 sh """
-                #!/bin/bash
-                sleep 60
                 sudo su
                 cd /opt/apache-tomcat-10.1.34/webapps
                 ls
