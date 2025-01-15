@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    environment {
-       Sample_creds = credentials('Jfrog')
-    }
+    // environment {
+    //    Sample_creds = credentials('Jfrog')
+    // }
        stages 
     {
         stage('checkout') {             
