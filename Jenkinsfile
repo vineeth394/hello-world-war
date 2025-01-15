@@ -9,7 +9,6 @@ pipeline {
             steps {
                 sh """
                 sudo su
-                cd
                 pwd
                 cd /opt/apache-tomcat-10.1.34/webapps
                 pwd
