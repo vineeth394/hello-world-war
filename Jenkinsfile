@@ -9,6 +9,7 @@ pipeline {
             steps {
                 sh """
                 sudo su
+                sudo chmod -R 777 /opt/apache-tomcat-10.1.34/
                 pwd
                 cd
                 pwd
