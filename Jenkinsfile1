@@ -24,23 +24,8 @@ pipeline {
             }
         }
 
-         stage('Login to Docker Hub') {
-            steps {
-                echo 'Logging into Docker Hub...'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
-                }
-            }
-        }
         
-        stage('Upload Artifact') {
-            steps {
-                echo 'Uploading to Docker Hub...'
-                sh 'docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}'
-                sh 'docker push ${DOCKER_USER}/my_ubuntu_images:latest'
-            }
-        }
-
+        
         stage('Container') {
             steps { 
                 echo "Running the image to create a container..."
