@@ -18,6 +18,7 @@ pipeline {
         stage('Build') {
             steps { 
                 echo "Building the package..."
+                sh 'docker --version'
                 sh 'docker build -t tomcat .'
             }
         }
